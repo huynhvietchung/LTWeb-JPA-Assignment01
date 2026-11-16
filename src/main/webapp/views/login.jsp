@@ -17,6 +17,10 @@
                     <h3 class="text-center fw-bold text-primary mb-1">Đăng nhập</h3>
                     <p class="text-center text-muted small mb-4">Hệ thống quản lý JPA / Hibernate</p>
 
+                    <c:if test="${not empty message}">
+                        <div class="alert alert-success py-2 small" role="alert">${message}</div>
+                    </c:if>
+
                     <c:if test="${not empty alert}">
                         <div class="alert alert-danger py-2 small" role="alert">${alert}</div>
                     </c:if>
@@ -30,11 +34,14 @@
                             <label class="form-label fw-semibold">Mật khẩu</label>
                             <input type="password" name="password" class="form-control" placeholder="Nhập mật khẩu..." required>
                         </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember">
-                            <label class="form-check-label small text-secondary" for="remember">
-                                Ghi nhớ đăng nhập (Cookie)
-                            </label>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="form-check mb-0">
+                                <input class="form-check-input" type="checkbox" name="remember" id="remember">
+                                <label class="form-check-label small text-secondary" for="remember">
+                                    Ghi nhớ đăng nhập
+                                </label>
+                            </div>
+                            <a href="${pageContext.request.contextPath}/forgot-password" class="small text-decoration-none">Quên mật khẩu?</a>
                         </div>
                         <button type="submit" class="btn btn-primary w-100 fw-semibold py-2">Đăng nhập</button>
                     </form>
