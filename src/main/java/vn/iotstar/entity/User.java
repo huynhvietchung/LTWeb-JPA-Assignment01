@@ -23,6 +23,18 @@ public class User implements Serializable {
     @Column(name = "email", unique = true, columnDefinition = "nvarchar(100)")
     private String email;
 
+    @Column(name = "status")
+    private Integer status; // 0: Chưa kích hoạt, 1: Đã kích hoạt
+
+    public Integer getStatus() { return status; }
+    public void setStatus(Integer status) { this.status = status; }
+
+    @Column(name = "code", columnDefinition = "nvarchar(10)")
+    private String code;
+
+    public String getCode() { return code; }
+    public void setCode(String code) { this.code = code; }
+
     @Column(name = "fullname", columnDefinition = "nvarchar(100)")
     private String fullname;
 
