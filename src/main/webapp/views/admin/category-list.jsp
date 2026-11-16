@@ -26,6 +26,19 @@
             <h5 class="mb-0 fw-bold text-primary">Danh sách Category</h5>
             <a href="<c:url value='/admin/category/add' />" class="btn btn-success btn-sm fw-semibold">+ Thêm Category</a>
         </div>
+        <div class="card-body border-bottom bg-light py-2">
+            <form action="<c:url value='/admin/categories' />" method="get" class="row g-2 align-items-center">
+                <div class="col-sm-8 col-md-5">
+                    <input type="text" name="keyword" value="${keyword}" class="form-control form-control-sm" placeholder="Tìm kiếm theo tên Category...">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary btn-sm">Tìm kiếm</button>
+                    <c:if test="${not empty keyword}">
+                        <a href="<c:url value='/admin/categories' />" class="btn btn-outline-secondary btn-sm">Xóa lọc</a>
+                    </c:if>
+                </div>
+            </form>
+        </div>
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0">
