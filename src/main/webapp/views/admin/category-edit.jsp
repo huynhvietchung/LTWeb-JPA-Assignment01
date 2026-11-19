@@ -18,6 +18,7 @@
                     <h5 class="mb-0 fw-bold text-primary">Chỉnh sửa Category</h5>
                 </div>
                 <div class="card-body p-4">
+                    <c:if test="${not empty alert}"><div class="alert alert-danger py-2 small">${alert}</div></c:if>
                     <form action="<c:url value='/admin/category/update' />" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="categoryid" value="${cate.categoryid}">
 

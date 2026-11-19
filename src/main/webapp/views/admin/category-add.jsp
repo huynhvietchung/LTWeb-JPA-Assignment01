@@ -17,6 +17,7 @@
                     <h5 class="mb-0 fw-bold text-primary">Thêm mới Category</h5>
                 </div>
                 <div class="card-body p-4">
+                    <c:if test="${not empty alert}"><div class="alert alert-danger py-2 small">${alert}</div></c:if>
                     <form action="<c:url value='/admin/category/insert' />" method="post" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="categoryname" class="form-label fw-semibold">Tên Category</label>

@@ -63,6 +63,19 @@
             <artifactId>mssql-jdbc</artifactId>
             <version>12.8.1.jre11</version>
         </dependency>
+        <!-- SiteMesh Decorator 3 (Jakarta EE 10 / Servlet 6.0) -->
+        <dependency>
+            <groupId>org.sitemesh</groupId>
+            <artifactId>sitemesh</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+
+        <!-- Cloudinary SDK (Upload ảnh đại diện Profile lên Cloud) -->
+        <dependency>
+            <groupId>com.cloudinary</groupId>
+            <artifactId>cloudinary-http44</artifactId>
+            <version>1.39.0</version>
+        </dependency>
     </dependencies>
 
     <build>
