@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import vn.iotstar.entity.User;
+import vn.iotstar.util.ValidationUtil;
 import vn.iotstar.service.IUserService;
 import vn.iotstar.service.UserServiceImpl;
 
@@ -31,7 +32,7 @@ public class LoginController extends HttpServlet {
             for (Cookie cookie : cookies) {
                 if ("username".equals(cookie.getName())) {
                     User user = userService.findByUsername(cookie.getValue());
-                    if (user != null && user.getStatus() == 1) {
+                    if (user != null && user.getStatus() != null && user.getStatus() == 1) {
                         session = req.getSession(true);
                         session.setAttribute("account", user);
                         resp.sendRedirect(req.getContextPath() + "/home");
@@ -50,9 +51,15 @@ public class LoginController extends HttpServlet {
         String password = req.getParameter("password");
         boolean isRememberMe = "on".equals(req.getParameter("remember"));
 
+        if (ValidationUtil.isBlank(username) || ValidationUtil.isBlank(password)) {
+            req.setAttribute("alert", "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu!");
+            req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
+            return;
+        }
+
         User user = userService.login(username, password);
         if (user != null) {
-            if (user.getStatus() == 0) {
+            if (user.getStatus() == null || user.getStatus() == 0) {
                 req.setAttribute("alert", "Tài khoản chưa được kích hoạt! Vui lòng kiểm tra email để nhập OTP.");
                 req.setAttribute("email", user.getEmail());
                 req.getRequestDispatcher("/views/verify.jsp").forward(req, resp);

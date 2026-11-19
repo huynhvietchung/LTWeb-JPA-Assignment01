@@ -24,11 +24,11 @@
                     <form action="${pageContext.request.contextPath}/register" method="post">
                         <div class="mb-3">
                             <label class="form-label fw-semibold">Tên đăng nhập</label>
-                            <input type="text" name="username" class="form-control" required>
+                            <input type="text" name="username" minlength="4" maxlength="30" pattern="^[a-zA-Z0-9_]{4,30}$" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-semibold">Mật khẩu</label>
-                            <input type="password" name="password" class="form-control" required>
+                            <input type="password" name="password" minlength="6" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-semibold">Email</label>
@@ -40,7 +40,7 @@
                         </div>
                         <div class="mb-4">
                             <label class="form-label fw-semibold">Số điện thoại</label>
-                            <input type="text" name="phone" class="form-control">
+                            <input type="text" name="phone" pattern="^(0|\+84)[0-9]{9,10}$" class="form-control">
                         </div>
                         <button type="submit" class="btn btn-primary w-100 fw-semibold py-2">Đăng ký</button>
                     </form>
