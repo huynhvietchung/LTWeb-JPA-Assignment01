@@ -16,7 +16,6 @@ public class Test {
         cate.setStatus(1);
 
         Video video = new Video();
-        video.setVideoId("v01");
         video.setTitle("test");
         video.setCategory(cate);
 

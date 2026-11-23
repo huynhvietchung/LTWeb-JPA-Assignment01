@@ -2,6 +2,7 @@ package vn.iotstar.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import jakarta.persistence.*;
 
 @Entity
@@ -26,14 +27,8 @@ public class User implements Serializable {
     @Column(name = "status")
     private Integer status; // 0: Chưa kích hoạt, 1: Đã kích hoạt
 
-    public Integer getStatus() { return status; }
-    public void setStatus(Integer status) { this.status = status; }
-
     @Column(name = "code", columnDefinition = "nvarchar(10)")
     private String code;
-
-    public String getCode() { return code; }
-    public void setCode(String code) { this.code = code; }
 
     @Column(name = "fullname", columnDefinition = "nvarchar(100)")
     private String fullname;
@@ -42,7 +37,7 @@ public class User implements Serializable {
     private String avatar;
 
     @Column(name = "roleid")
-    private int roleid; // 1: User, 2: Manager, 3: Admin
+    private Integer roleid; // 1: User, 2: Manager, 3: Admin
 
     @Column(name = "phone", columnDefinition = "nvarchar(20)")
     private String phone;
@@ -50,6 +45,9 @@ public class User implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "createdDate")
     private Date createdDate;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Video> videos;
 
     public User() {}
 
@@ -65,18 +63,27 @@ public class User implements Serializable {
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 
+    public Integer getStatus() { return status; }
+    public void setStatus(Integer status) { this.status = status; }
+
+    public String getCode() { return code; }
+    public void setCode(String code) { this.code = code; }
+
     public String getFullname() { return fullname; }
     public void setFullname(String fullname) { this.fullname = fullname; }
 
     public String getAvatar() { return avatar; }
     public void setAvatar(String avatar) { this.avatar = avatar; }
 
-    public int getRoleid() { return roleid; }
-    public void setRoleid(int roleid) { this.roleid = roleid; }
+    public Integer getRoleid() { return roleid; }
+    public void setRoleid(Integer roleid) { this.roleid = roleid; }
 
     public String getPhone() { return phone; }
     public void setPhone(String phone) { this.phone = phone; }
 
     public Date getCreatedDate() { return createdDate; }
     public void setCreatedDate(Date createdDate) { this.createdDate = createdDate; }
+
+    public List<Video> getVideos() { return videos; }
+    public void setVideos(List<Video> videos) { this.videos = videos; }
 }
